@@ -50,6 +50,7 @@ export const Input = styled.input`
   padding: 2rem;
   margin: 2rem;
   font-size: 18px;
+  cursor: pointer;
   &::placeholder {
     font-size: 35px;
   }

@@ -7,7 +7,8 @@ import { MainImageLogin, ContainerInfos, Form, FormContainer, Input } from '../u
 const Login = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => {axios.post('http://localhost:4000/api/user/login', data)
+  const onSubmit = data => {
+    axios.post('http://localhost:4000/api/user/login', data)
     .then(res => {
       // On enregistre le token dans le localStorage
       localStorage.token = res.data.token;
@@ -21,30 +22,30 @@ const Login = () => {
   }
 
   return (
-      <MainImageLogin>
+    <MainImageLogin>
 
       <ContainerInfos>
         <h1>BACKOFFICE</h1>
         <h2>Veuillez vous connecter afin d'accéder à votre espace de création</h2>
       </ContainerInfos><FormContainer>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-      
-            <div>
+        <Form onSubmit={handleSubmit(onSubmit)}>
 
-              <Input type="text"
-          name="login"
-          placeholder="login"
-          rules={{ required: true }}
-          {...register('login', { required: true })}></Input>
-        <Input type="password"
-          name="password"
-          placeholder="mot de passe"
-          rules={{ required: true }}
-          {...register('password', { required: true })}></Input>
-        <Input type="submit" name="valider" value="Valider"></Input>
-        </div>
-        
-      </Form></FormContainer></MainImageLogin>
+          <div>
+
+            <Input type="text"
+              name="login"
+              placeholder="login"
+              rules={{ required: true }}
+              {...register('login', { required: true })}></Input>
+            <Input type="password"
+              name="password"
+              placeholder="mot de passe"
+              rules={{ required: true }}
+              {...register('password', { required: true })}></Input>
+            <Input type="submit" name="valider" value="Valider"></Input>
+          </div>
+
+        </Form></FormContainer></MainImageLogin>
   )
 }
 
