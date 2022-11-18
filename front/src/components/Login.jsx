@@ -9,16 +9,16 @@ const Login = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => {
     axios.post('http://localhost:4000/api/user/login', data)
-    .then(res => {
-      // On enregistre le token dans le localStorage
-      localStorage.token = res.data.token;
-      // On "enregistre" le token dans la conf. de Axios
-      axios.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
-      // On "navigate" (redirige) vers '/my-notes'
-      navigate('/my-notes');
-    }).catch(err => {
-      alert(err.message + ' - Paire email / mot de passe incorrecte');
-    })
+      .then(res => {
+        // On enregistre le token dans le localStorage
+        localStorage.token = res.data.token;
+        // On "enregistre" le token dans la conf. de Axios
+        axios.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
+        // On "navigate" (redirige) vers '/my-notes'
+        navigate('/admin');
+      }).catch(err => {
+        alert(err.message + ' - Paire email / mot de passe incorrecte');
+      })
   }
 
   return (
