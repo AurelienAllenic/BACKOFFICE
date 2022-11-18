@@ -8,13 +8,15 @@ import Bio from "./components/AdminOptions/Bio";
 import Experience from "./components/AdminOptions/Experience";
 import Portfolio from "./components/AdminOptions/Portfolio";
 import Contact from "./components/AdminOptions/Contact";
+import HomePage from "./components/HomePage";
 
 function App() {
   axios.defaults.headers.common.Authorization = `Bearer ${localStorage.token}`;
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/" element={<HomePage />}></Route>
         <Route path="/admin" element={
             <PrivateRoute>
               <AdminPanel />
