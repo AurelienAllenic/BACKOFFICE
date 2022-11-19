@@ -5,11 +5,11 @@ function AdminPanel() {
         <>
             <h1>Choisissez les éléments que vous souhaitez créer ou modifier pour votre site</h1>
             <ul>
-                <li>Section <a href="/accueil">Accueil</a></li>
-                <li>Section <a href="/bio">Bio</a></li>
-                <li>Section <a href="/experience">Experience</a></li>
-                <li>Section <a href="/portfolio">Portfolio</a></li>
-                <li>Section <a href="/contact">Contact</a></li>
+                <li>Section Accueil <a href='/seeAll'>Voir</a></li>
+                <li>Section Bio <a href='/seeAll'>Voir</a></li>
+                <li>Section Expérience <a href='/seeAll'>Voir</a></li>
+                <li>Section Portfolio <a href='/seeAll'>Voir</a></li>
+                <li>Section Contact <a href='/seeAll'>Voir</a></li>
             </ul>
         </>
     )

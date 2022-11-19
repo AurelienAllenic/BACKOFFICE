@@ -9,6 +9,7 @@ import Experience from "./components/AdminOptions/Experience";
 import Portfolio from "./components/AdminOptions/Portfolio";
 import Contact from "./components/AdminOptions/Contact";
 import HomePage from "./components/HomePage";
+import SeeAll from "./components/SeeAll";
 
 function App() {
   axios.defaults.headers.common.Authorization = `Bearer ${localStorage.token}`;
@@ -20,6 +21,11 @@ function App() {
         <Route path="/admin" element={
             <PrivateRoute>
               <AdminPanel />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/seeAll" element={
+            <PrivateRoute>
+              <SeeAll />
             </PrivateRoute>
           }></Route>
       

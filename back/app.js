@@ -8,7 +8,11 @@ const path = require('path');
 /**
  * ROUTES IMPORTS
  */
-const noteRoutes = require('./routes/note');
+const accueilRoutes = require('./routes/accueil');
+const bioRoutes = require('./routes/bio');
+const experienceRoutes = require('./routes/experience');
+const portfolioRoutes = require('./routes/portfolio');
+const contactRoutes = require('./routes/contact');
 const userRoutes = require('./routes/user');
 
 /**
@@ -42,7 +46,11 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 
-app.use('/api/note', noteRoutes);
+app.use('/api/accueil', accueilRoutes);
+app.use('/api/bio', bioRoutes);
+app.use('/api/experience', experienceRoutes);
+app.use('/api/portfolio', portfolioRoutes);
+app.use('/api/contact', contactRoutes);
 app.use('/api/user', userRoutes);
 app.use('/notes_illustrations', express.static(path.join(__dirname, 'notes_illustrations/')));
 
