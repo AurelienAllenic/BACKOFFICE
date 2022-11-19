@@ -16,10 +16,11 @@ const Edit = () => {
         console.log(data)
         const formData = new FormData();
         formData.append("image", data.imageUrl[0])
-        formData.append("name", data.name)
-        formData.append("description", data.description)
+        formData.append("title", data.title)
+        formData.append("content", data.content)
         axios.post('http://localhost:4000/api/accueil', formData)
             .then(res => {
+                console.log(res.data)
                 navigate('/')
             }).catch(err => {
                 alert(err.message + ' - Erreur lors de la création de la note')
@@ -30,10 +31,10 @@ const Edit = () => {
         <>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input type="text" name="name" placeholder='Titre' {...register('name', { required: true })} />
-                    <textarea placeholder='Description' rows="8" {...register('description', { required: true })} />
+                    <input type="text" name="title" placeholder='Titre' {...register('title', { required: true })} />
+                    <textarea placeholder='Description' rows="8" {...register('content  ', { required: true })} />
                     <label htmlFor="imageUrl">Image</label>
-                    <input id="imageUrl" type="file" name="imageUrl" placeholder='image' {...register('imageUrl', { required: true })} />
+                    <input id="imageUrl" type="file" name="imageUrl" placeholder='image' {...register('imageUrl', { required: false })} />
                     <input type="submit" placeholder='valider' />
                 </form>
             </div>

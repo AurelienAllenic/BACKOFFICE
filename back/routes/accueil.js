@@ -6,10 +6,10 @@ const multer = require("../middleware/multer-config");
 
 const accueilCtrl = require("../controllers/accueil");
 
-router.post("/accueil", auth, multer, accueilCtrl.create);
-router.put("/accueil/:id", auth, multer, accueilCtrl.update);
-router.delete("/accueil/:id", auth, accueilCtrl.delete);
-router.get("/accueil/:id", auth, accueilCtrl.findOne);
-router.use("/accueil", auth, accueilCtrl.findAll);
+router.post("/", auth, multer, accueilCtrl.create);
+router.put("/:id", auth, multer, accueilCtrl.update);
+router.delete("/:id", auth, accueilCtrl.delete);
+router.get("/:id", auth, accueilCtrl.findOne);
+router.use("/", auth, accueilCtrl.findAll);
 
 module.exports = router;
