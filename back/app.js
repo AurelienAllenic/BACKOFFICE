@@ -52,6 +52,9 @@ app.use('/api/experience', experienceRoutes);
 app.use('/api/portfolio', portfolioRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/user', userRoutes);
-app.use('/notes_illustrations', express.static(path.join(__dirname, 'notes_illustrations/')));
+app.use(
+    "/assets/images",
+    express.static(path.join(__dirname, "assets/images"))
+  );
 
 module.exports = app;

@@ -15,7 +15,7 @@ const Edit = () => {
     const onSubmit = data => {
         console.log(data)
         const formData = new FormData();
-        formData.append("image", data.imageUrl[0])
+        formData.append("imageUrl", data.imageUrl[0])
         formData.append("title", data.title)
         formData.append("content", data.content)
         axios.post('http://localhost:4000/api/accueil', formData)
@@ -32,7 +32,7 @@ const Edit = () => {
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input type="text" name="title" placeholder='Titre' {...register('title', { required: true })} />
-                    <textarea placeholder='Description' rows="8" {...register('content  ', { required: true })} />
+                    <textarea placeholder='content' rows="8" {...register('content', { required: true })} />
                     <label htmlFor="imageUrl">Image</label>
                     <input id="imageUrl" type="file" name="imageUrl" placeholder='image' {...register('imageUrl', { required: false })} />
                     <input type="submit" placeholder='valider' />
@@ -41,7 +41,4 @@ const Edit = () => {
         </>
     )
 }
-/*
-<input type="file" style={{ "display": "none" }} ref={fileInput} />
-            <button onClick={selectFile}>Image</button>*/
 export default Edit;

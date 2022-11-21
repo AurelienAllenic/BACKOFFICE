@@ -10,6 +10,6 @@ router.post("/", auth, multer, accueilCtrl.create);
 router.put("/:id", auth, multer, accueilCtrl.update);
 router.delete("/:id", auth, accueilCtrl.delete);
 router.get("/:id", auth, accueilCtrl.findOne);
-router.use("/", auth, accueilCtrl.findAll);
+router.use("/", accueilCtrl.findAll);
 
 module.exports = router;

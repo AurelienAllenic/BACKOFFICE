@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const Section1 = styled.section`
-height: 100vh;
-width: 100%;
-background-color: #bdc3c7;
-opacity: 0.7;
-`
 export const Section2 = styled.section`
 height: 100vh;
 width: 100%;
