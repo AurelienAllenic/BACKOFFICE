@@ -32,9 +32,9 @@ const Edit = () => {
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input type="text" name="title" placeholder='Titre' {...register('title', { required: true })} />
-                    <textarea placeholder='content' rows="8" {...register('content', { required: true })} />
+                    <textarea placeholder='content' name="content" rows="8" {...register('content', { required: true })} />
                     <label htmlFor="imageUrl">Image</label>
-                    <input id="imageUrl" type="file" name="imageUrl" placeholder='image' {...register('imageUrl', { required: false })} />
+                    <input id="imageUrl" type="file" name="image" placeholder='image' {...register('imageUrl', { required: false })} />
                     <input type="submit" placeholder='valider' />
                 </form>
             </div>

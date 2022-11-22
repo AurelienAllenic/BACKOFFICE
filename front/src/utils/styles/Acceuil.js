@@ -12,14 +12,14 @@ export const H1 = styled.h1`
 display: flex;
 justify-content : center;
 align-items: center;
-font-size: 35px;
-padding: 35px;
+font-size: 45px;
+padding-top: 150px;
 margin: 0px;
 color: white;
 `
 export const Ul = styled.ul`
 display: grid;
-grid-template-columns: repeat(3, 5fr);
+grid-template-columns: repeat(1, 5fr);
 grid-gap: 10px;
 grid-auto-rows: minmax(100px, auto);
 background-color: transparent;
@@ -41,4 +41,11 @@ font-weight:600;
 `
 export const SpanSubTitle = styled.span`
 font-size: 25px;
+`
+export const AccueilImage = styled.img`
+width: 100%;
+height: 20vh;
+display: flex;
+justify-content : center;
+align-items: center;
 `

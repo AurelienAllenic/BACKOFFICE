@@ -1,15 +1,29 @@
+const express = require("express");
+const router = express.Router();
 const AccueilModel = require('../models/Accueil');
+const fs = require("fs");
 
-// CREATE
 exports.create = (req, res, next) => {
-    delete req.body.id;
+    console.log(req.body);
+    const accueilObject = req.body;
+    console.log(req.auth);
+    delete accueilObject._id;
     const accueil = new AccueilModel({
-        ...req.body
+      ...accueilObject,
+      userId: req.auth.userId,
+      imageUrl: `${req.protocol}://${req.get("host")}/assets/images/${
+        req.file.filename
+      }`
     });
-    accueil.save()
-        .then(() => res.status(201).json({ message: `Accueil ${accueil.title} enregistré !`, accueil}))
-        .catch(error => res.status(400).json({ error }));
-};
+    accueil
+      .save()
+      .then(() => {
+        res.status(201).json({ message: "Accueil enregistré !" });
+      })
+      .catch((error) => {
+        res.status(400).json({ error });
+      });
+  };
 // UPDATE
 exports.update = (req, res, next) => {
     AccueilModel.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })

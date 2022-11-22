@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { ImageAccueil, Ul, Li, SpanTitle, SpanSubTitle, H1 } from "../../utils/styles/Acceuil";
+import { ImageAccueil, Ul, Li, SpanTitle, SpanSubTitle, AccueilImage, H1 } from "../../utils/styles/Acceuil";
 
 const Accueil = () => {
 
@@ -34,7 +34,7 @@ const Accueil = () => {
                 <Ul id="seeAll">
                     {
                         AccueilElements.map((accueil) => (
-                            <Li key={accueil._id} id={accueil._id}><SpanTitle>{accueil.title}</SpanTitle><br /><SpanSubTitle>{accueil.content}</SpanSubTitle></Li>
+                            <Li key={accueil._id} id={accueil._id}><SpanTitle>{accueil.title}</SpanTitle><br /><SpanSubTitle>{accueil.content}</SpanSubTitle><AccueilImage src={accueil.imageUrl} id={accueil._id} alt="accueil"></AccueilImage></Li>
                         )
                         )}
                 </Ul>
