@@ -1,15 +1,26 @@
-const AccueilModel = require('../models/Bio');
+const BioModel = require('../models/Bio');
 
-// CREATE
 exports.create = (req, res, next) => {
-    delete req.body.id;
+    console.log(req.body);
+    const bioObject = req.body;
+    console.log(req.auth);
+    delete bioObject._id;
     const bio = new BioModel({
-        ...req.body
+      ...bioObject,
+      userId: req.auth.userId,
+      imageUrl: `${req.protocol}://${req.get("host")}/assets/images/${
+        req.file.filename
+      }`
     });
-    bio.save()
-        .then(() => res.status(201).json({ message: `Bio ${bio.title} enregistrée !`, bio}))
-        .catch(error => res.status(400).json({ error }));
-};
+    bio
+      .save()
+      .then(() => {
+        res.status(201).json({ message: "Bio enregistrée !" });
+      })
+      .catch((error) => {
+        res.status(400).json({ error });
+      });
+  };
 // UPDATE
 exports.update = (req, res, next) => {
     BioModel.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })

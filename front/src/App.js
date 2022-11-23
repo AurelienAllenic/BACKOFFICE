@@ -8,6 +8,10 @@ import SeeAllAccueil from "./components/SeeAllAccueil";
 import CreateAccueil from "./components/Create/AccueilCreate"
 import SeeOneAccueil from "./components/SeeOne/Accueil"
 import ModifyAccueil from "./components/Modify/ModifyAccueil";
+import SeeAllBio from "./components/SeeAllBio"
+import CreateBio from "./components/Create/BioCreate"
+import SeeOneBio from "./components/SeeOne/Bio"
+import ModifyBio from "./components/Modify/Bio"
 
 function App() {
   axios.defaults.headers.common.Authorization = `Bearer ${localStorage.token}`;
@@ -31,6 +35,11 @@ function App() {
               <CreateAccueil />
             </PrivateRoute>
           }></Route>
+                 <Route path="/create-bio" element={
+            <PrivateRoute>
+              <CreateBio />
+            </PrivateRoute>
+          }></Route>
           <Route path="/seeOne-accueil/:id" element={
             <PrivateRoute>
               <SeeOneAccueil />
@@ -39,6 +48,21 @@ function App() {
                  <Route path="/modify-accueil/:id" element={
             <PrivateRoute>
               <ModifyAccueil />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/seeAll-bio" element={
+            <PrivateRoute>
+              <SeeAllBio />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/seeOne-bio/:id" element={
+            <PrivateRoute>
+              <SeeOneBio />
+            </PrivateRoute>
+          }></Route>
+                 <Route path="/modify-bio/:id" element={
+            <PrivateRoute>
+              <ModifyBio />
             </PrivateRoute>
           }></Route>
           </Routes>

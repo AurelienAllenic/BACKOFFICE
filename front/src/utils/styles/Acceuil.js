@@ -44,7 +44,8 @@ font-size: 25px;
 `
 export const AccueilImage = styled.img`
 width: 100%;
-height: 20vh;
+height: 30vh;
+padding-top: 25px;
 display: flex;
 justify-content : center;
 align-items: center;

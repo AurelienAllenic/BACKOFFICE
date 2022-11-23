@@ -35,7 +35,7 @@ function ModifyAccueil() {
             })
             .catch((err) => {
                 console.error(err.response.data);
-                alert(err.message + " - Erreur lors de la modification de la note");
+                alert(err.message + " - Erreur lors de la modification de l'accueil");
             });
     };
 
