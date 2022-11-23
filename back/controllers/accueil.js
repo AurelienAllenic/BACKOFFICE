@@ -26,9 +26,25 @@ exports.create = (req, res, next) => {
   };
 // UPDATE
 exports.update = (req, res, next) => {
-    AccueilModel.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Accueil modifié !'}))
-        .catch(error => res.status(400).json({ error }));
+  const accueilObject = req.file
+  ? {
+      ...req.body,
+      imageUrl: `${req.protocol}://${req.get("host")}/../../assets/images/${
+        req.file.filename
+      }`,
+    }
+  : { ...req.body };
+
+delete accueilObject._userId;
+AccueilModel.findOne({ _id: req.params.id })
+  .then((accueil) => {
+      AccueilModel.updateOne(
+        { _id: req.params.id },
+        { ...accueilObject, _id: req.params.id }
+      )
+        .then(() => res.status(200).json({ message: "Accueil modifié!" }))
+        .catch((error) => res.status(401).json({ error }));
+    })
 };
 // DELETE
 exports.delete = (req, res, next) => {

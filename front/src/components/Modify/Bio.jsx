@@ -25,7 +25,7 @@ function ModifyBio() {
 
     const onSubmit = (data) => {
         const formData = new FormData();
-        formData.append("image", data.imageUrl[0])
+        formData.append("imageUrl", data.imageUrl[0])
         formData.append("title", data.title)
         formData.append("content", data.content)
         axios
@@ -44,7 +44,7 @@ function ModifyBio() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                     type="text"
-                    name="titre"
+                    name="title"
                     placeholder={bio.title}
                     {...register("title", { required: true })}
                 />

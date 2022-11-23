@@ -23,10 +23,26 @@ exports.create = (req, res, next) => {
   };
 // UPDATE
 exports.update = (req, res, next) => {
-    BioModel.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Bio modifiée !'}))
-        .catch(error => res.status(400).json({ error }));
-};
+    const bioObject = req.file
+    ? {
+        ...req.body,
+        imageUrl: `${req.protocol}://${req.get("host")}/../../assets/images/${
+          req.file.filename
+        }`,
+      }
+    : { ...req.body };
+  
+  delete bioObject._userId;
+  BioModel.findOne({ _id: req.params.id })
+    .then((bio) => {
+        BioModel.updateOne(
+          { _id: req.params.id },
+          { ...bioObject, _id: req.params.id }
+        )
+          .then(() => res.status(200).json({ message: "Bio modifié!" }))
+          .catch((error) => res.status(401).json({ error }));
+      })
+  };
 // DELETE
 exports.delete = (req, res, next) => {
     BioModel.deleteOne({ _id: req.params.id })

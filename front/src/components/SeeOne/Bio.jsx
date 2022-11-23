@@ -34,7 +34,7 @@ function Bio() {
     return (
         <>
             <div>
-                <h1 id={bio._id}>{bio.name}</h1>
+                <h1 id={bio._id}>{bio.title}</h1>
                 <p id={bio._id}>{bio.content}</p>
             </div>
             <div>

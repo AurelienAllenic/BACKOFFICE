@@ -25,7 +25,7 @@ function ModifyAccueil() {
 
     const onSubmit = (data) => {
         const formData = new FormData();
-        formData.append("image", data.imageUrl[0])
+        formData.append("imageUrl", data.imageUrl[0])
         formData.append("title", data.title)
         formData.append("content", data.content)
         axios
@@ -54,7 +54,7 @@ function ModifyAccueil() {
                     {...register("content", { required: true })}
                 />
                 <label htmlFor="imageUrl">Image</label>
-                <input id="imageUrl" type="file" name="imageUrl" placeholder='image' {...register('imageUrl', { required: false })} />
+                <input id="imageUrl" type="file" name="image" placeholder='image' {...register('imageUrl', { required: false })} />
                 <input type="submit" placeholder='valider' />
             </form>
         </>
