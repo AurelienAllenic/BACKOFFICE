@@ -34,7 +34,7 @@ function Accueil() {
     return (
         <>
             <div>
-                <h1 id={accueil._id}>{accueil.name}</h1>
+                <h1 id={accueil._id}>{accueil.title}</h1>
                 <p id={accueil._id}>{accueil.content}</p>
             </div>
             <div>
