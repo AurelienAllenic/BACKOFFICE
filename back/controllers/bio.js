@@ -39,7 +39,7 @@ exports.update = (req, res, next) => {
           { _id: req.params.id },
           { ...bioObject, _id: req.params.id }
         )
-          .then(() => res.status(200).json({ message: "Bio modifié!" }))
+          .then(() => res.status(200).json({ message: "Bio modifiée!" }))
           .catch((error) => res.status(401).json({ error }));
       })
   };

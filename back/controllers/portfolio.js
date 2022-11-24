@@ -2,19 +2,47 @@ const PortfolioModel = require('../models/Portfolio');
 
 // CREATE
 exports.create = (req, res, next) => {
-    delete req.body.id;
+    console.log(req.body);
+    const portfolioObject = req.body;
+    console.log(req.auth);
+    delete portfolioObject._id;
     const portfolio = new PortfolioModel({
-        ...req.body
+      ...portfolioObject,
+      userId: req.auth.userId,
+      imageUrl: `${req.protocol}://${req.get("host")}/assets/images/${
+        req.file.filename
+      }`
     });
-    portfolio.save()
-        .then(() => res.status(201).json({ message: `Portfolio ${portfolio.title} enregistré !`, portfolio}))
-        .catch(error => res.status(400).json({ error }));
-};
+    portfolio
+      .save()
+      .then(() => {
+        res.status(201).json({ message: "Portfolio enregistré !" });
+      })
+      .catch((error) => {
+        res.status(400).json({ error });
+      });
+  };
 // UPDATE
 exports.update = (req, res, next) => {
-    PortfolioModel.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Portfolio modifié !'}))
-        .catch(error => res.status(400).json({ error }));
+  const portfolioObject = req.file
+  ? {
+      ...req.body,
+      imageUrl: `${req.protocol}://${req.get("host")}/../../assets/images/${
+        req.file.filename
+      }`,
+    }
+  : { ...req.body };
+
+delete portfolioObject._userId;
+PortfolioModel.findOne({ _id: req.params.id })
+  .then((portfolio) => {
+      PortfolioModel.updateOne(
+        { _id: req.params.id },
+        { ...portfolioObject, _id: req.params.id }
+      )
+        .then(() => res.status(200).json({ message: "Portfolio modifié!" }))
+        .catch((error) => res.status(401).json({ error }));
+    })
 };
 // DELETE
 exports.delete = (req, res, next) => {

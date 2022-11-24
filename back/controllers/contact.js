@@ -1,21 +1,48 @@
 const ContactModel = require('../models/Contact');
 
-// CREATE
 exports.create = (req, res, next) => {
-    delete req.body.id;
+    console.log(req.body);
+    const contactObject = req.body;
+    console.log(req.auth);
+    delete contactObject._id;
     const contact = new ContactModel({
-        ...req.body
+      ...contactObject,
+      userId: req.auth.userId,
+      imageUrl: `${req.protocol}://${req.get("host")}/assets/images/${
+        req.file.filename
+      }`
     });
-    contact.save()
-        .then(() => res.status(201).json({ message: `Contact ${contact.title} enregistré !`, contact}))
-        .catch(error => res.status(400).json({ error }));
-};
+    contact
+      .save()
+      .then(() => {
+        res.status(201).json({ message: "Contact enregistré !" });
+      })
+      .catch((error) => {
+        res.status(400).json({ error });
+      });
+  };
 // UPDATE
 exports.update = (req, res, next) => {
-    ContactModel.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Contact modifié !'}))
-        .catch(error => res.status(400).json({ error }));
-};
+    const contactObject = req.file
+    ? {
+        ...req.body,
+        imageUrl: `${req.protocol}://${req.get("host")}/../../assets/images/${
+          req.file.filename
+        }`,
+      }
+    : { ...req.body };
+  
+  delete contactObject._userId;
+  ContactModel.findOne({ _id: req.params.id })
+    .then((contact) => {
+        ContactModel.updateOne(
+          { _id: req.params.id },
+          { ...contactObject, _id: req.params.id }
+        )
+          .then(() => res.status(200).json({ message: "Contact modifié!" }))
+          .catch((error) => res.status(401).json({ error }));
+      })
+  };
 // DELETE
 exports.delete = (req, res, next) => {
     ContactModel.deleteOne({ _id: req.params.id })

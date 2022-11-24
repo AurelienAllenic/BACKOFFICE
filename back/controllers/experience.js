@@ -2,20 +2,48 @@ const ExperienceModel = require('../models/Experience');
 
 // CREATE
 exports.create = (req, res, next) => {
-    delete req.body.id;
+    console.log(req.body);
+    const experienceObject = req.body;
+    console.log(req.auth);
+    delete experienceObject._id;
     const experience = new ExperienceModel({
-        ...req.body
+      ...experienceObject,
+      userId: req.auth.userId,
+      imageUrl: `${req.protocol}://${req.get("host")}/assets/images/${
+        req.file.filename
+      }`
     });
-    experience.save()
-        .then(() => res.status(201).json({ message: `Experience ${experience.title} enregistrée !`, experience}))
-        .catch(error => res.status(400).json({ error }));
-};
+    experience
+      .save()
+      .then(() => {
+        res.status(201).json({ message: "Experience enregistrée !" });
+      })
+      .catch((error) => {
+        res.status(400).json({ error });
+      });
+  };
 // UPDATE
 exports.update = (req, res, next) => {
-    ExperienceModel.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Experience modifiée !'}))
-        .catch(error => res.status(400).json({ error }));
-};
+    const experienceObject = req.file
+    ? {
+        ...req.body,
+        imageUrl: `${req.protocol}://${req.get("host")}/../../assets/images/${
+          req.file.filename
+        }`,
+      }
+    : { ...req.body };
+  
+  delete experienceObject._userId;
+  ExperienceModel.findOne({ _id: req.params.id })
+    .then((experience) => {
+        ExperienceModel.updateOne(
+          { _id: req.params.id },
+          { ...experienceObject, _id: req.params.id }
+        )
+          .then(() => res.status(200).json({ message: "Experience modifiée!" }))
+          .catch((error) => res.status(401).json({ error }));
+      })
+  };
 // DELETE
 exports.delete = (req, res, next) => {
     ExperienceModel.deleteOne({ _id: req.params.id })

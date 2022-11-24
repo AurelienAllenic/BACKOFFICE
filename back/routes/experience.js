@@ -6,10 +6,10 @@ const multer = require("../middleware/multer-config");
 
 const experienceCtrl = require("../controllers/experience");
 
-router.post("/experience", auth, multer, experienceCtrl.create);
-router.put("/experience/:id", auth, multer, experienceCtrl.update);
-router.delete("/experience/:id", auth, experienceCtrl.delete);
-router.get("/experience/:id", auth, experienceCtrl.findOne);
-router.use("/experience", auth, experienceCtrl.findAll);
+router.post("/", auth, multer, experienceCtrl.create);
+router.put("/:id", auth, multer, experienceCtrl.update);
+router.delete("/:id", auth, experienceCtrl.delete);
+router.get("/:id", auth, experienceCtrl.findOne);
+router.use("/", auth, experienceCtrl.findAll);
 
 module.exports = router;
