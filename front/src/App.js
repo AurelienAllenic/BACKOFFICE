@@ -20,6 +20,10 @@ import SeeAllPortfolio from "./components/SeeAllPortfolio";
 import CreatePortfolio from "./components/Create/Portfolio"
 import SeeOnePortfolio from "./components/SeeOne/Portfolio"
 import ModifyPortfolio from "./components/Modify/Portfolio"
+import SeeAllContact from "./components/SeeAllContact";
+import CreateContact from "./components/Create/Contact"
+import SeeOneContact from "./components/SeeOne/Contact"
+import ModifyContact from "./components/Modify/Contact"
 
 function App() {
   axios.defaults.headers.common.Authorization = `Bearer ${localStorage.token}`;
@@ -111,6 +115,26 @@ function App() {
           <Route path="/modify-portfolio/:id" element={
             <PrivateRoute>
               <ModifyPortfolio />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/seeAll-contact" element={
+            <PrivateRoute>
+              <SeeAllContact />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/create-contact" element={
+            <PrivateRoute>
+              <CreateContact />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/seeOne-contact/:id" element={
+            <PrivateRoute>
+              <SeeOneContact />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/modify-contact/:id" element={
+            <PrivateRoute>
+              <ModifyContact />
             </PrivateRoute>
           }></Route>
           </Routes>

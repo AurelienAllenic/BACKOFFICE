@@ -5,6 +5,7 @@ import Accueil from './Sections/Accueil'
 import Bio from "./Sections/Bio"
 import Experience from './Sections/Experience'
 import Portfolio from './Sections/Portfolio'
+import Contact from "./Sections/Contact"
 
 
 function HomePage() {
@@ -15,7 +16,7 @@ function HomePage() {
             <Bio id='bio' />
             <Experience id="experience" />
             <Portfolio id="portfolio" />
-            <Section5 id='contact'>contact</Section5>
+            <Contact id='contact' />
         </>
     )
 }
