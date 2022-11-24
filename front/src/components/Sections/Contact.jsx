@@ -30,15 +30,17 @@ const Contact = () => {
 
     return (
         <>
-            <ImageAccueil><H1>Contact</H1>
-                <Ul id="seeAllContact">
-                    {
-                        ContactElements.map((contact) => (
-                            <Li key={contact._id} id={contact._id}><SpanTitle>{contact.title}</SpanTitle><br /><SpanSubTitle>{contact.content}</SpanSubTitle><AccueilImage src={contact.imageUrl} id={contact._id} alt="contact"></AccueilImage></Li>
-                        )
-                        )}
-                </Ul>
-            </ImageAccueil>
+            <section id="contact">
+                <ImageAccueil><H1>Contact</H1>
+                    <Ul id="seeAllContact">
+                        {
+                            ContactElements.map((contact) => (
+                                <Li key={contact._id} id={contact._id}><SpanTitle>{contact.title}</SpanTitle><br /><SpanSubTitle>{contact.content}</SpanSubTitle><AccueilImage src={contact.imageUrl} id={contact._id} alt="contact"></AccueilImage></Li>
+                            )
+                            )}
+                    </Ul>
+                </ImageAccueil>
+            </section>
         </>
     );
 }

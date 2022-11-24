@@ -30,15 +30,17 @@ const Accueil = () => {
 
     return (
         <>
-            <ImageAccueil><H1>Accueil</H1>
-                <Ul id="seeAll">
-                    {
-                        AccueilElements.map((accueil) => (
-                            <Li key={accueil._id} id={accueil._id}><SpanTitle>{accueil.title}</SpanTitle><br /><SpanSubTitle>{accueil.content}</SpanSubTitle><AccueilImage src={accueil.imageUrl} id={accueil._id} alt="accueil"></AccueilImage></Li>
-                        )
-                        )}
-                </Ul>
-            </ImageAccueil>
+            <section id="accueil">
+                <ImageAccueil><H1>Accueil</H1>
+                    <Ul id="seeAll">
+                        {
+                            AccueilElements.map((accueil) => (
+                                <Li key={accueil._id} id={accueil._id}><SpanTitle>{accueil.title}</SpanTitle><br /><SpanSubTitle>{accueil.content}</SpanSubTitle><AccueilImage src={accueil.imageUrl} id={accueil._id} alt="accueil"></AccueilImage></Li>
+                            )
+                            )}
+                    </Ul>
+                </ImageAccueil>
+            </section>
         </>
     );
 }

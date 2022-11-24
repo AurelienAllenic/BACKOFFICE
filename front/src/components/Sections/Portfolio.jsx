@@ -30,15 +30,17 @@ const Portfolio = () => {
 
     return (
         <>
-            <ImageAccueil><H1>Portfolio</H1>
-                <Ul id="seeAllPortfolio">
-                    {
-                        PortfolioElements.map((portfolio) => (
-                            <Li key={portfolio._id} id={portfolio._id}><SpanTitle>{portfolio.title}</SpanTitle><br /><SpanSubTitle>{portfolio.content}</SpanSubTitle><AccueilImage src={portfolio.imageUrl} id={portfolio._id} alt="portfolio"></AccueilImage></Li>
-                        )
-                        )}
-                </Ul>
-            </ImageAccueil>
+            <section id="portfolio">
+                <ImageAccueil><H1>Portfolio</H1>
+                    <Ul id="seeAllPortfolio">
+                        {
+                            PortfolioElements.map((portfolio) => (
+                                <Li key={portfolio._id} id={portfolio._id}><SpanTitle>{portfolio.title}</SpanTitle><br /><SpanSubTitle>{portfolio.content}</SpanSubTitle><AccueilImage src={portfolio.imageUrl} id={portfolio._id} alt="portfolio"></AccueilImage></Li>
+                            )
+                            )}
+                    </Ul>
+                </ImageAccueil>
+            </section>
         </>
     );
 }

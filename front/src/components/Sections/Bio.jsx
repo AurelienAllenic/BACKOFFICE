@@ -30,15 +30,17 @@ const Accueil = () => {
 
     return (
         <>
-            <ImageAccueil><H1>Bio</H1>
-                <Ul id="seeAllBio">
-                    {
-                        BioElements.map((bio) => (
-                            <Li key={bio._id} id={bio._id}><SpanTitle>{bio.title}</SpanTitle><br /><SpanSubTitle>{bio.content}</SpanSubTitle><AccueilImage src={bio.imageUrl} id={bio._id} alt="bio"></AccueilImage></Li>
-                        )
-                        )}
-                </Ul>
-            </ImageAccueil>
+            <section id="bio">
+                <ImageAccueil><H1>Bio</H1>
+                    <Ul id="seeAllBio">
+                        {
+                            BioElements.map((bio) => (
+                                <Li key={bio._id} id={bio._id}><SpanTitle>{bio.title}</SpanTitle><br /><SpanSubTitle>{bio.content}</SpanSubTitle><AccueilImage src={bio.imageUrl} id={bio._id} alt="bio"></AccueilImage></Li>
+                            )
+                            )}
+                    </Ul>
+                </ImageAccueil>
+            </section>
         </>
     );
 }

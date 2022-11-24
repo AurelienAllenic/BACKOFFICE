@@ -12,11 +12,11 @@ function HomePage() {
     return (
         <>
             <Nav />
-            <Accueil id="accueil" />
-            <Bio id='bio' />
-            <Experience id="experience" />
-            <Portfolio id="portfolio" />
-            <Contact id='contact' />
+            <Accueil />
+            <Bio />
+            <Experience />
+            <Portfolio />
+            <Contact />
         </>
     )
 }

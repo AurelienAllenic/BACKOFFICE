@@ -30,15 +30,17 @@ const Accueil = () => {
 
     return (
         <>
-            <ImageAccueil><H1>Experience</H1>
-                <Ul id="seeAllExperience">
-                    {
-                        ExperienceElements.map((experience) => (
-                            <Li key={experience._id} id={experience._id}><SpanTitle>{experience.title}</SpanTitle><br /><SpanSubTitle>{experience.content}</SpanSubTitle><AccueilImage src={experience.imageUrl} id={experience._id} alt="experience"></AccueilImage></Li>
-                        )
-                        )}
-                </Ul>
-            </ImageAccueil>
+            <section id="experience">
+                <ImageAccueil><H1>Experience</H1>
+                    <Ul id="seeAllExperience">
+                        {
+                            ExperienceElements.map((experience) => (
+                                <Li key={experience._id} id={experience._id}><SpanTitle>{experience.title}</SpanTitle><br /><SpanSubTitle>{experience.content}</SpanSubTitle><AccueilImage src={experience.imageUrl} id={experience._id} alt="experience"></AccueilImage></Li>
+                            )
+                            )}
+                    </Ul>
+                </ImageAccueil>
+            </section>
         </>
     );
 }
