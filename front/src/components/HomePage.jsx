@@ -3,6 +3,7 @@ import { Section2, Section3, Section4, Section5 } from '../utils/styles/Homepage
 import Nav from './Nav'
 import Accueil from './Sections/Accueil'
 import Bio from "./Sections/Bio"
+import Experience from './Sections/Experience'
 
 
 function HomePage() {
@@ -11,7 +12,7 @@ function HomePage() {
             <Nav />
             <Accueil id="accueil" />
             <Bio id='bio' />
-            <Section3 id='experience'>experience</Section3>
+            <Experience id="experience" />
             <Section4 id='portfolio'>portfolio</Section4>
             <Section5 id='contact'>contact</Section5>
         </>

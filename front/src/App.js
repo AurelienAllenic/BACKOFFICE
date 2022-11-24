@@ -12,6 +12,10 @@ import SeeAllBio from "./components/SeeAllBio"
 import CreateBio from "./components/Create/BioCreate"
 import SeeOneBio from "./components/SeeOne/Bio"
 import ModifyBio from "./components/Modify/Bio"
+import SeeAllExperience from "./components/SeeAllExperience";
+import CreateExperience from "./components/Create/Experience"
+import SeeOneExperience from "./components/SeeOne/Experience";
+import ModifyExperience from "./components/Modify/Experience";
 
 function App() {
   axios.defaults.headers.common.Authorization = `Bearer ${localStorage.token}`;
@@ -60,9 +64,29 @@ function App() {
               <SeeOneBio />
             </PrivateRoute>
           }></Route>
-                 <Route path="/modify-bio/:id" element={
+          <Route path="/modify-bio/:id" element={
             <PrivateRoute>
               <ModifyBio />
+            </PrivateRoute>
+          }></Route>
+              <Route path="/seeAll-experience" element={
+            <PrivateRoute>
+              <SeeAllExperience />
+            </PrivateRoute>
+          }></Route>
+              <Route path="/create-experience" element={
+            <PrivateRoute>
+              <CreateExperience />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/seeOne-experience/:id" element={
+            <PrivateRoute>
+              <SeeOneExperience />
+            </PrivateRoute>
+          }></Route>
+          <Route path="/modify-experience/:id" element={
+            <PrivateRoute>
+              <ModifyExperience />
             </PrivateRoute>
           }></Route>
           </Routes>
