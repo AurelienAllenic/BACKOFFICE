@@ -4,6 +4,7 @@ import Nav from './Nav'
 import Accueil from './Sections/Accueil'
 import Bio from "./Sections/Bio"
 import Experience from './Sections/Experience'
+import Portfolio from './Sections/Portfolio'
 
 
 function HomePage() {
@@ -13,7 +14,7 @@ function HomePage() {
             <Accueil id="accueil" />
             <Bio id='bio' />
             <Experience id="experience" />
-            <Section4 id='portfolio'>portfolio</Section4>
+            <Portfolio id="portfolio" />
             <Section5 id='contact'>contact</Section5>
         </>
     )
