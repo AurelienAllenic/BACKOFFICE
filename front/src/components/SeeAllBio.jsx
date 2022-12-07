@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { MainTitle, Button, SecondTitle, Ul, Li, SpanArrow } from "../utils/styles/SeeAll"
+import { AiOutlineArrowRight } from "react-icons/ai"
 
 function SeeAllBio() {
     const [BioElements, setBioElements] = useState([]);
@@ -28,16 +30,16 @@ function SeeAllBio() {
     }
     return (
         <>
-            <h1>Bio</h1>
-            <button onClick={goCreate}>Créer une nouvelle partie de la bio</button>
-            <h2>Ou modifiez/supprimez des parties de la bio déja existantes</h2>
-            <ul id="seeAllBio">
+            <MainTitle>Bio</MainTitle>
+            <Button onClick={goCreate}><SpanArrow><AiOutlineArrowRight /></SpanArrow>Créer une nouvelle partie de la bio</Button>
+            <SecondTitle>Ou modifiez/supprimez des parties de la bio déja existantes</SecondTitle>
+            <Ul id="seeAllBio">
                 {
                     BioElements.map((bio) => (
-                        <li key={bio._id} id={bio._id}><Link style={linkStyle} to={`/seeOne-bio/${bio._id}`}>{bio.title}</Link></li>
+                        <Li key={bio._id} id={bio._id}><Link style={linkStyle} to={`/seeOne-bio/${bio._id}`}>{bio.title}</Link></Li>
                     )
                     )}
-            </ul>
+            </Ul>
         </>
     )
 }

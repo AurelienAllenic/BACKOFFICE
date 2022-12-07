@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { MainTitle, Button, SecondTitle, Ul, Li, SpanArrow } from "../utils/styles/SeeAll"
+import { AiOutlineArrowRight } from "react-icons/ai"
 
 function SeeAllExperience() {
     const [ExperienceElements, setExperienceElements] = useState([]);
@@ -28,16 +30,16 @@ function SeeAllExperience() {
     }
     return (
         <>
-            <h1>Experience</h1>
-            <button onClick={goCreate}>Créer une nouvelle partie de l'experience</button>
-            <h2>Ou modifiez/supprimez des parties de l'experience déja existantes</h2>
-            <ul id="seeAllExperience">
+            <MainTitle>Experience</MainTitle>
+            <Button onClick={goCreate}><SpanArrow><AiOutlineArrowRight /></SpanArrow>Créer une nouvelle partie de l'experience</Button>
+            <SecondTitle>Ou modifiez/supprimez des parties de l'experience déja existantes</SecondTitle>
+            <Ul id="seeAllExperience">
                 {
                     ExperienceElements.map((experience) => (
-                        <li key={experience._id} id={experience._id}><Link style={linkStyle} to={`/seeOne-experience/${experience._id}`}>{experience.title}</Link></li>
+                        <Li key={experience._id} id={experience._id}><Link style={linkStyle} to={`/seeOne-experience/${experience._id}`}>{experience.title}</Link></Li>
                     )
                     )}
-            </ul>
+            </Ul>
         </>
     )
 }

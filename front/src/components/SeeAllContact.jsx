@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { MainTitle, Button, SecondTitle, Ul, Li, SpanArrow } from "../utils/styles/SeeAll"
+import { AiOutlineArrowRight } from "react-icons/ai"
 
 function SeeAllContact() {
     const [ContactElements, setContactElements] = useState([]);
@@ -28,16 +30,16 @@ function SeeAllContact() {
     }
     return (
         <>
-            <h1>Contact</h1>
-            <button onClick={goCreate}>Créer une nouvelle partie du contact</button>
-            <h2>Ou modifiez/supprimez des parties du contact déja existantes</h2>
-            <ul id="seeAllContact">
+            <MainTitle>Contact</MainTitle>
+            <Button onClick={goCreate}><SpanArrow><AiOutlineArrowRight /></SpanArrow>Créer une nouvelle partie du contact</Button>
+            <SecondTitle>Ou modifiez/supprimez des parties du contact déja existantes</SecondTitle>
+            <Ul id="seeAllContact">
                 {
                     ContactElements.map((contact) => (
-                        <li key={contact._id} id={contact._id}><Link style={linkStyle} to={`/seeOne-contact/${contact._id}`}>{contact.title}</Link></li>
+                        <Li key={contact._id} id={contact._id}><Link style={linkStyle} to={`/seeOne-contact/${contact._id}`}>{contact.title}</Link></Li>
                     )
                     )}
-            </ul>
+            </Ul>
         </>
     )
 }

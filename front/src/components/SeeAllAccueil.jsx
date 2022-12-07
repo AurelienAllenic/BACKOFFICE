@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { MainTitle, Button, SecondTitle, Ul, Li, SpanArrow } from "../utils/styles/SeeAll"
+import { AiOutlineArrowRight } from "react-icons/ai"
 
 function SeeAllAccueil() {
     const [AccueilElements, setAccueilElements] = useState([]);
@@ -28,16 +30,16 @@ function SeeAllAccueil() {
     }
     return (
         <>
-            <h1>Accueil</h1>
-            <button onClick={goCreate}>Créer une nouvelle partie de l'accueil</button>
-            <h2>Ou modifiez/supprimez des parties de l'acceuil déja existantes</h2>
-            <ul id="seeAll">
+            <MainTitle>Accueil</MainTitle>
+            <Button onClick={goCreate}><SpanArrow><AiOutlineArrowRight /></SpanArrow>Créer une nouvelle partie de l'accueil</Button>
+            <SecondTitle>Ou modifiez/supprimez des parties de l'acceuil déja existantes</SecondTitle>
+            <Ul id="seeAll">
                 {
                     AccueilElements.map((accueil) => (
-                        <li key={accueil._id} id={accueil._id}><Link style={linkStyle} to={`/seeOne-accueil/${accueil._id}`}>{accueil.title}</Link></li>
+                        <Li key={accueil._id} id={accueil._id}><Link style={linkStyle} to={`/seeOne-accueil/${accueil._id}`}>{accueil.title}</Link></Li>
                     )
                     )}
-            </ul>
+            </Ul>
         </>
     )
 }
