@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Form, Input, Textarea, Label, Validate } from "../../utils/styles/Create"
+import { MainTitle } from "../../utils/styles/AdminPanel"
 
 function ModifyPortfolio() {
     const params = useParams();
@@ -41,22 +43,23 @@ function ModifyPortfolio() {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input
+            <MainTitle>Modifier une partie de la section Portfolio</MainTitle>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <iIput
                     type="text"
                     name="titre"
                     placeholder={portfolio.title}
                     {...register("title", { required: true })}
                 />
-                <textarea
+                <Textarea
                     placeholder={portfolio.content}
                     rows="8"
                     {...register("content", { required: true })}
                 />
-                <label htmlFor="imageUrl">Image</label>
-                <input id="imageUrl" type="file" name="image" placeholder='image' {...register('imageUrl', { required: false })} />
-                <input type="submit" placeholder='valider' />
-            </form>
+                <Label htmlFor="imageUrl">Image</Label>
+                <Input id="imageUrl" type="file" name="image" placeholder='image' {...register('imageUrl', { required: false })} />
+                <Validate type="submit" placeholder='valider' />
+            </Form>
         </>
     );
 };
