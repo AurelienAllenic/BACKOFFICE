@@ -27,7 +27,7 @@ font-size: 25px;
 `
 export const Ul = styled.ul`
 position: absolute;
-left: 45%;
+left: 40%;
 list-style: none;
 font-size: 20px;
 font-weight: 500;
@@ -37,6 +37,11 @@ border: 1px solid black;
 background-color:#eee;
 border-radius: 10px 10px 10px 10px;
 padding: 15px;
+margin: 10px;
+&:hover{
+    background-color: transparent;
+    cursor: pointer;
+}
 `
 export const SpanArrow = styled.span`
 margin: 10px;
