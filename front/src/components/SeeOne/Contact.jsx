@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { DivInfos, Title, Content, DivButtons, Button, Image } from "../../utils/styles/SeeOne"
+import { MainTitle } from "../../utils/styles/AdminPanel"
 
 function Contact() {
     const linkStyle = {
@@ -33,16 +35,18 @@ function Contact() {
 
     return (
         <>
-            <div>
-                <h1 id={contact._id}>{contact.title}</h1>
-                <p id={contact._id}>{contact.content}</p>
-            </div>
-            <div>
-                <button>
+            <MainTitle>Voici le post que vous avez séléctionné</MainTitle>
+            <DivInfos>
+                <Title id={contact._id}>{contact.title}</Title>
+                <Content id={contact._id}>{contact.content}</Content>
+                <Image src={contact.imageUrl}></Image>
+            </DivInfos>
+            <DivButtons>
+                <Button>
                     <Link style={linkStyle} to={`/modify-contact/${contact._id}`}>Modifier</Link>
-                </button>
-                <button onClick={() => deleteContact(contact._id)}>Supprimer</button>
-            </div>
+                </Button>
+                <Button onClick={() => deleteContact(contact._id)}>Supprimer</Button>
+            </DivButtons>
         </>
     )
 }

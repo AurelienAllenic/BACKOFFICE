@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { DivInfos, Title, Content, DivButtons, Button, Image } from "../../utils/styles/SeeOne"
+import { MainTitle } from "../../utils/styles/AdminPanel"
 
 function Accueil() {
     const linkStyle = {
@@ -33,16 +35,18 @@ function Accueil() {
 
     return (
         <>
-            <div>
-                <h1 id={accueil._id}>{accueil.title}</h1>
-                <p id={accueil._id}>{accueil.content}</p>
-            </div>
-            <div>
-                <button>
+            <MainTitle>Voici le post que vous avez séléctionné</MainTitle>
+            <DivInfos>
+                <Title id={accueil._id}>{accueil.title}</Title>
+                <Content id={accueil._id}>{accueil.content}</Content>
+                <Image src={accueil.imageUrl}></Image>
+            </DivInfos>
+            <DivButtons>
+                <Button>
                     <Link style={linkStyle} to={`/modify-accueil/${accueil._id}`}>Modifier</Link>
-                </button>
-                <button onClick={() => deleteAccueil(accueil._id)}>Supprimer</button>
-            </div>
+                </Button>
+                <Button onClick={() => deleteAccueil(accueil._id)}>Supprimer</Button>
+            </DivButtons>
         </>
     )
 }

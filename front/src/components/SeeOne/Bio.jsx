@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-
+import { DivInfos, Title, Content, DivButtons, Button, Image } from "../../utils/styles/SeeOne"
+import { MainTitle } from "../../utils/styles/AdminPanel"
 function Bio() {
     const linkStyle = {
         textDecoration: "none",
@@ -33,16 +34,18 @@ function Bio() {
 
     return (
         <>
-            <div>
-                <h1 id={bio._id}>{bio.title}</h1>
-                <p id={bio._id}>{bio.content}</p>
-            </div>
-            <div>
-                <button>
+            <MainTitle>Voici le post que vous avez séléctionné</MainTitle>
+            <DivInfos>
+                <Title id={bio._id}>{bio.title}</Title>
+                <Content id={bio._id}>{bio.content}</Content>
+                <Image src={bio.imageUrl}></Image>
+            </DivInfos>
+            <DivButtons>
+                <Button>
                     <Link style={linkStyle} to={`/modify-bio/${bio._id}`}>Modifier</Link>
-                </button>
-                <button onClick={() => deleteBio(bio._id)}>Supprimer</button>
-            </div>
+                </Button>
+                <Button onClick={() => deleteBio(bio._id)}>Supprimer</Button>
+            </DivButtons>
         </>
     )
 }

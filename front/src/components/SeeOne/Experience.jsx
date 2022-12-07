@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { DivInfos, Title, Content, DivButtons, Button, Image } from "../../utils/styles/SeeOne"
+import { MainTitle } from "../../utils/styles/AdminPanel"
 
 function Experience() {
     const linkStyle = {
@@ -33,16 +35,18 @@ function Experience() {
 
     return (
         <>
-            <div>
-                <h1 id={experience._id}>{experience.title}</h1>
-                <p id={experience._id}>{experience.content}</p>
-            </div>
-            <div>
-                <button>
+            <MainTitle>Voici le post que vous avez séléctionné</MainTitle>
+            <DivInfos>
+                <Title id={experience._id}>{experience.title}</Title>
+                <Content id={experience._id}>{experience.content}</Content>
+                <Image src={experience.imageUrl}></Image>
+            </DivInfos>
+            <DivButtons>
+                <Button>
                     <Link style={linkStyle} to={`/modify-experience/${experience._id}`}>Modifier</Link>
-                </button>
-                <button onClick={() => deleteExperience(experience._id)}>Supprimer</button>
-            </div>
+                </Button>
+                <Button onClick={() => deleteExperience(experience._id)}>Supprimer</Button>
+            </DivButtons>
         </>
     )
 }
