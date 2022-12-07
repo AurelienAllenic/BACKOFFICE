@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { ImageAccueil, Ul, Li, SpanTitle, SpanSubTitle, AccueilImage, H1 } from "../../utils/styles/Acceuil";
+import { Ul, Li, SpanTitle, SpanSubTitle, AccueilImage, H1 } from "../../utils/styles/Acceuil";
 
 const Contact = () => {
 
@@ -31,15 +31,14 @@ const Contact = () => {
     return (
         <>
             <section id="contact">
-                <ImageAccueil><H1>Contact</H1>
-                    <Ul id="seeAllContact">
-                        {
-                            ContactElements.map((contact) => (
-                                <Li key={contact._id} id={contact._id}><SpanTitle>{contact.title}</SpanTitle><br /><SpanSubTitle>{contact.content}</SpanSubTitle><AccueilImage src={contact.imageUrl} id={contact._id} alt="contact"></AccueilImage></Li>
-                            )
-                            )}
-                    </Ul>
-                </ImageAccueil>
+                <H1>Contact</H1>
+                <Ul id="seeAllContact">
+                    {
+                        ContactElements.map((contact) => (
+                            <Li key={contact._id} id={contact._id}><SpanTitle>{contact.title}</SpanTitle><br /><SpanSubTitle>{contact.content}</SpanSubTitle><AccueilImage src={contact.imageUrl} id={contact._id} alt="contact"></AccueilImage></Li>
+                        )
+                        )}
+                </Ul>
             </section>
         </>
     );

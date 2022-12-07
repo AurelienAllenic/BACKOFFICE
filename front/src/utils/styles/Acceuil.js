@@ -1,13 +1,5 @@
 import styled from "styled-components";
-import img from "../../assets/accueil.jpg";
 
-export const ImageAccueil = styled.div`
-background: url(${img}) no-repeat center/cover;
-height: auto;
-width: 100%;
-color: black;
-margin: 0px;
-`
 export const H1 = styled.h1`
 display: flex;
 justify-content : center;
